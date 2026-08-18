@@ -1,0 +1,22 @@
+# Nuxt
+.nuxt
+.output
+dist
+
+# Dependencies
+node_modules
+
+# Env
+.env
+.env.*
+
+# Logs
+*.log
+
+# Claude
+CLAUDE.md
+.claude
+
+# OS
+.DS_Store
+Thumbs.db
