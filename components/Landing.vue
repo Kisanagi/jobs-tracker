@@ -1,63 +1,105 @@
 <script setup>
-const features = [
-  { icon: '📋', title: 'Lacak Semua Lamaran', desc: 'Catat setiap lamaran: perusahaan, posisi, sumber, dan statusnya, di satu tempat.' },
-  { icon: '🗂️', title: 'Kanban Pipeline', desc: 'Visualisasikan progress dari Wishlist hingga Accepted dengan board drag & drop.' },
-  { icon: '🔍', title: 'Filter & Cari', desc: 'Cari berdasarkan perusahaan, filter per status atau role track dalam hitungan detik.' },
+// Floating pipeline nodes (mimic the DeFi network labels)
+const nodes = [
+  { label: 'Applied',   value: '24', icon: '◔', pos: 'top-[22%] left-[8%]' },
+  { label: 'Interview', value: '06', icon: '◑', pos: 'top-[24%] right-[7%]' },
+  { label: 'Wishlist',  value: '18', icon: '◇', pos: 'bottom-[26%] left-[10%]' },
+  { label: 'Offer',     value: '02', icon: '◈', pos: 'bottom-[24%] right-[9%]' },
 ]
+
+const sources = ['LinkedIn', 'Glints', 'Jobstreet', 'Kalibrr', 'Indeed']
 </script>
 
 <template>
-  <div class="min-h-screen bg-cream font-sans text-ink">
-    <nav class="flex items-center justify-between px-6 sm:px-10 py-5">
-      <span class="font-display font-semibold text-xl text-ink">◈ Jobs Tracker</span>
-      <NuxtLink to="/login" class="bg-brand-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-brand-700 transition-colors">Masuk</NuxtLink>
-    </nav>
+  <div class="min-h-screen bg-black font-sans text-white">
+    <div class="relative w-full bg-black overflow-hidden min-h-screen flex flex-col">
 
-    <section class="text-center px-6 pt-14 pb-20">
-      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-ink leading-[1.05] max-w-3xl mx-auto tracking-tight animate-fade-up">
-        <em>Kendali penuh</em> atas<br />lamaranmu
-      </h1>
-      <p class="text-muted mt-6 max-w-md mx-auto text-sm sm:text-base animate-fade-up delay-1">
-        Satu tempat untuk mencatat, melacak, dan memantau semua lamaran kerja kamu.
-      </p>
-      <div class="flex items-center justify-center gap-3 mt-9 animate-fade-up delay-2">
-        <NuxtLink to="/register" class="bg-brand-600 text-white font-medium px-6 py-3 rounded-xl shadow-sm transition-all hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-md">Mulai gratis</NuxtLink>
-        <NuxtLink to="/login" class="bg-ink text-white font-medium px-6 py-3 rounded-xl transition-all hover:bg-brand-900 hover:-translate-y-0.5">Masuk</NuxtLink>
-      </div>
-    </section>
+      <!-- Ambient glow -->
+      <div class="pointer-events-none absolute -top-32 right-0 w-[60%] h-[70%] rounded-full blur-3xl opacity-60
+                  bg-[radial-gradient(closest-side,rgba(176,197,168,0.35),transparent)] animate-glow"></div>
+      <div class="pointer-events-none absolute -bottom-40 -left-24 w-[55%] h-[70%] rounded-full blur-3xl opacity-50
+                  bg-[radial-gradient(closest-side,rgba(255,255,255,0.18),transparent)] animate-glow-slow"></div>
+      <!-- Star specks -->
+      <div class="pointer-events-none absolute inset-0 opacity-[0.15]
+                  bg-[radial-gradient(1px_1px_at_20%_30%,#fff,transparent),radial-gradient(1px_1px_at_70%_60%,#fff,transparent),radial-gradient(1px_1px_at_40%_80%,#fff,transparent),radial-gradient(1px_1px_at_85%_25%,#fff,transparent)]"></div>
 
-    <section class="px-6 sm:px-10 pb-8 grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div v-for="(f, idx) in features" :key="f.title"
-        class="bg-white/60 border border-black/5 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg animate-fade-up"
-        :class="`delay-${idx + 1}`">
-        <div class="w-11 h-11 rounded-full bg-brand-200 text-brand-800 grid place-items-center text-lg">{{ f.icon }}</div>
-        <h3 class="font-display font-semibold text-lg text-ink mt-4">{{ f.title }}</h3>
-        <p class="text-sm text-muted mt-2 leading-relaxed">{{ f.desc }}</p>
-      </div>
-    </section>
+      <!-- Nav -->
+      <nav class="relative z-10 flex items-center justify-between px-5 sm:px-8 py-5">
+        <span class="font-semibold text-lg tracking-tight flex items-center gap-2">
+          <span class="w-7 h-7 rounded-full bg-white/10 grid place-items-center text-sm">◈</span> Sise
+        </span>
+        <NuxtLink to="/login" class="flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white transition-colors">
+          <span class="w-7 h-7 rounded-full border border-white/20 grid place-items-center text-xs">◐</span>
+          Buat Akun
+        </NuxtLink>
+      </nav>
 
-    <section class="px-6 sm:px-10 pt-12 pb-16">
-      <h2 class="font-display text-3xl font-semibold text-center text-ink animate-fade-up">Semua dalam satu board</h2>
-      <div class="mt-8 bg-white rounded-2xl border border-black/5 shadow-xl p-5 sm:p-7 max-w-4xl mx-auto animate-fade-up delay-1">
-        <p class="font-display text-lg font-semibold text-ink mb-5">Dashboard</p>
-        <div class="grid grid-cols-3 gap-4">
-          <div class="rounded-xl bg-cream p-4">
-            <p class="text-[10px] font-medium text-muted uppercase tracking-wide">Total Lamaran</p>
-            <p class="text-3xl sm:text-4xl font-bold text-ink mt-1">12</p>
+      <!-- Hero -->
+      <section class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 py-16">
+        <!-- Floating nodes (desktop only) -->
+        <template v-for="n in nodes" :key="n.label">
+          <div class="hidden lg:flex items-center gap-3 absolute animate-float" :class="n.pos">
+            <span class="w-11 h-11 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white/70 backdrop-blur">{{ n.icon }}</span>
+            <div class="text-left leading-tight">
+              <p class="text-sm text-white/90">{{ n.label }}</p>
+              <p class="text-xs text-white/40">{{ n.value }}</p>
+            </div>
           </div>
-          <div class="rounded-xl bg-cream p-4">
-            <p class="text-[10px] font-medium text-muted uppercase tracking-wide">Menunggu</p>
-            <p class="text-3xl sm:text-4xl font-bold text-ink mt-1">5</p>
-          </div>
-          <div class="rounded-xl bg-cream p-4">
-            <p class="text-[10px] font-medium text-muted uppercase tracking-wide">Ditolak</p>
-            <p class="text-3xl sm:text-4xl font-bold text-ink mt-1">3</p>
-          </div>
+        </template>
+
+        <a href="#board" class="inline-flex items-center gap-2 text-xs text-white/70 bg-white/5 border border-white/10 rounded-full px-3.5 py-1.5 mb-8 backdrop-blur hover:bg-white/10 transition-colors animate-fade-up">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-300"></span> Kelola lamaran tanpa ribet →
+        </a>
+
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] max-w-4xl animate-fade-up delay-1">
+          Semua lamaran dalam<br /><span class="text-white/35">satu papan kendali</span>
+        </h1>
+        <p class="text-white/50 mt-6 max-w-lg text-sm sm:text-base animate-fade-up delay-2">
+          Catat, lacak, dan pindahkan setiap lamaran dari Wishlist hingga Offer, semua dalam satu dashboard yang mulus.
+        </p>
+
+        <div class="flex items-center gap-3 mt-9 animate-fade-up delay-3">
+          <NuxtLink to="/register" class="flex items-center gap-1.5 bg-white/10 border border-white/15 text-white font-medium px-6 py-3 rounded-full backdrop-blur transition-all hover:bg-white/15 hover:-translate-y-0.5">
+            Mulai gratis <span class="text-white/60">↗</span>
+          </NuxtLink>
+          <NuxtLink to="/login" class="bg-white text-black font-medium px-6 py-3 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/10">
+            Masuk
+          </NuxtLink>
         </div>
-      </div>
-      <div class="text-center mt-10">
-        <NuxtLink to="/register" class="inline-block bg-brand-600 text-white font-medium px-7 py-3 rounded-xl transition-all hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-md animate-fade-up delay-2">Mulai gratis</NuxtLink>
-      </div>
-    </section>
+
+        <!-- Bottom meta row -->
+        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between text-xs">
+          <span class="flex items-center gap-2 text-white/50 bg-white/5 border border-white/10 rounded-full pl-1.5 pr-3 py-1.5">
+            <span class="w-6 h-6 rounded-full bg-white/10 grid place-items-center">↓</span> Scroll
+          </span>
+          <span class="text-brand-300/80 hidden sm:block">Pipeline lamaran</span>
+        </div>
+      </section>
+
+      <!-- Source logos -->
+      <section id="sumber" class="relative z-10 border-t border-white/10 px-5 sm:px-8 py-8">
+        <p class="text-center text-xs text-white/30 mb-5">Lacak lamaran dari sumber favoritmu</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+          <span v-for="s in sources" :key="s" class="text-white/40 font-medium tracking-tight hover:text-white/70 transition-colors">{{ s }}</span>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
+
+<style scoped>
+@keyframes glow {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+  50%      { transform: translate(-4%, 3%) scale(1.08); opacity: 0.7; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+.animate-glow      { animation: glow 9s ease-in-out infinite; }
+.animate-glow-slow { animation: glow 13s ease-in-out infinite; }
+.animate-float     { animation: float 5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-glow, .animate-glow-slow, .animate-float { animation: none; }
+}
+</style>

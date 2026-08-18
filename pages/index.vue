@@ -87,35 +87,35 @@ const COLUMN_ACCENTS = {
 
     <!-- Header -->
     <div class="animate-fade-up">
-      <h1 class="text-2xl md:text-3xl font-semibold text-gray-900">Dashboard</h1>
-      <p class="text-sm text-gray-400 mt-0.5">{{ user.email }}</p>
+      <h1 class="text-2xl md:text-3xl font-semibold text-white tracking-tight">Dashboard</h1>
+      <p class="text-sm text-white/40 mt-0.5">{{ user.email }}</p>
     </div>
 
     <!-- Stat cards -->
     <div class="grid grid-cols-3 gap-3 md:gap-4 animate-fade-up delay-1">
-      <div class="relative overflow-hidden rounded-2xl bg-brand-600 p-3 md:p-5 text-white">
-        <p class="text-[10px] md:text-xs font-medium uppercase tracking-wide opacity-70">Total</p>
-        <p class="text-2xl md:text-4xl font-bold mt-1">{{ total }}</p>
-        <span class="absolute -right-3 -bottom-3 text-6xl opacity-10 select-none">📋</span>
+      <div class="relative overflow-hidden rounded-2xl bg-white/[0.04] border border-white/10 p-3 md:p-5">
+        <p class="text-[10px] md:text-xs font-medium uppercase tracking-wide text-white/40">Total</p>
+        <p class="text-2xl md:text-4xl font-bold mt-1 text-white">{{ total }}</p>
+        <span class="absolute -right-3 -bottom-3 text-6xl opacity-[0.07] select-none">📋</span>
       </div>
-      <div class="relative overflow-hidden rounded-2xl bg-blue-50 border border-blue-100 p-3 md:p-5">
-        <p class="text-[10px] md:text-xs font-medium text-blue-400 uppercase tracking-wide">Menunggu</p>
-        <p class="text-2xl md:text-4xl font-bold text-blue-600 mt-1">{{ awaiting }}</p>
-        <span class="absolute -right-3 -bottom-3 text-6xl opacity-10 select-none">⏳</span>
+      <div class="relative overflow-hidden rounded-2xl bg-white/[0.04] border border-white/10 p-3 md:p-5">
+        <p class="text-[10px] md:text-xs font-medium text-white/40 uppercase tracking-wide">Menunggu</p>
+        <p class="text-2xl md:text-4xl font-bold text-brand-300 mt-1">{{ awaiting }}</p>
+        <span class="absolute -right-3 -bottom-3 text-6xl opacity-[0.07] select-none">⏳</span>
       </div>
-      <div class="relative overflow-hidden rounded-2xl bg-red-50 border border-red-100 p-3 md:p-5">
-        <p class="text-[10px] md:text-xs font-medium text-red-400 uppercase tracking-wide">Ditolak</p>
-        <p class="text-2xl md:text-4xl font-bold text-red-500 mt-1">{{ rejected }}</p>
-        <span class="absolute -right-3 -bottom-3 text-6xl opacity-10 select-none">❌</span>
+      <div class="relative overflow-hidden rounded-2xl bg-white/[0.04] border border-white/10 p-3 md:p-5">
+        <p class="text-[10px] md:text-xs font-medium text-white/40 uppercase tracking-wide">Ditolak</p>
+        <p class="text-2xl md:text-4xl font-bold text-red-400 mt-1">{{ rejected }}</p>
+        <span class="absolute -right-3 -bottom-3 text-6xl opacity-[0.07] select-none">❌</span>
       </div>
     </div>
 
     <!-- Search -->
     <div class="animate-fade-up delay-2">
       <div class="relative">
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 text-sm">🔍</span>
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-sm">🔍</span>
         <input v-model="search" type="text" placeholder="Cari perusahaan..."
-          class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 bg-gray-50 focus:bg-white transition-colors" />
+          class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-white/10 text-sm text-white placeholder-white/30 focus:outline-none focus:border-white/30 bg-white/5 transition-colors" />
       </div>
     </div>
 
@@ -123,13 +123,13 @@ const COLUMN_ACCENTS = {
     <div class="overflow-x-auto md:overflow-x-visible pb-4 -mx-5 px-5 md:mx-0 md:px-0 snap-x snap-mandatory animate-fade-up delay-2">
       <div class="flex gap-3 min-w-max md:grid md:auto-cols-fr md:grid-flow-col md:min-w-0 md:gap-3">
         <div v-for="status in STATUSES" :key="status"
-          class="w-[78vw] md:w-auto snap-start flex flex-col rounded-xl bg-gray-50 border border-gray-100 border-t-2 transition-all"
-          :class="[COLUMN_ACCENTS[status], { 'ring-2 ring-brand-300 bg-brand-50/30': draggingId }]"
+          class="w-[78vw] md:w-auto snap-start flex flex-col rounded-xl bg-white/[0.03] border border-white/10 border-t-2 transition-all"
+          :class="[COLUMN_ACCENTS[status], { 'ring-2 ring-brand-400/50 bg-white/[0.06]': draggingId }]"
           @dragover="onDragOver"
           @drop="onDrop($event, status)">
 
           <div class="flex items-center justify-between px-3 py-2.5">
-            <span class="text-xs font-semibold text-gray-600">{{ status }}</span>
+            <span class="text-xs font-semibold text-white/70">{{ status }}</span>
             <span class="text-xs font-bold min-w-5 h-5 flex items-center justify-center rounded-full px-1.5"
               :class="STATUS_COLORS[status]">{{ byStatus(status).length }}</span>
           </div>
@@ -139,35 +139,40 @@ const COLUMN_ACCENTS = {
               draggable="true"
               @dragstart="onDragStart($event, app.id)"
               @dragend="draggingId = null"
-              class="bg-white rounded-xl border border-gray-100 p-3 cursor-grab active:cursor-grabbing active:opacity-50 active:scale-95 transition-all duration-150 hover:shadow-md hover:-translate-y-0.5 group">
+              class="bg-white/[0.06] rounded-xl border border-white/10 p-3 cursor-grab active:cursor-grabbing active:opacity-50 active:scale-95 transition-all duration-150 hover:bg-white/10 hover:-translate-y-0.5 group">
 
               <div class="flex items-start gap-2 mb-2">
-                <span class="w-7 h-7 rounded-lg bg-brand-100 text-brand-700 grid place-items-center text-xs font-bold shrink-0 mt-0.5">
+                <span class="w-7 h-7 rounded-lg bg-brand-500/20 text-brand-200 grid place-items-center text-xs font-bold shrink-0 mt-0.5">
                   {{ app.company[0].toUpperCase() }}
                 </span>
                 <div class="min-w-0">
                   <a v-if="app.job_url" :href="app.job_url" target="_blank" @click.stop
-                    class="text-xs font-semibold text-gray-800 hover:text-brand-600 truncate block leading-tight">{{ app.company }}</a>
-                  <span v-else class="text-xs font-semibold text-gray-800 truncate block leading-tight">{{ app.company }}</span>
-                  <p class="text-[11px] text-gray-400 truncate mt-0.5">{{ app.position }}</p>
+                    class="text-xs font-semibold text-white/90 hover:text-brand-300 truncate block leading-tight">{{ app.company }}</a>
+                  <span v-else class="text-xs font-semibold text-white/90 truncate block leading-tight">{{ app.company }}</span>
+                  <p class="text-[11px] text-white/40 truncate mt-0.5">{{ app.position }}</p>
                 </div>
               </div>
 
-              <div class="flex items-center justify-between pt-2 border-t border-gray-50">
-                <span class="text-[10px] text-gray-300">{{ app.applied_date ?? '-' }}</span>
+              <div class="flex items-center justify-between pt-2 border-t border-white/5">
+                <span class="text-[10px] text-white/30">{{ app.applied_date ?? '-' }}</span>
                 <div class="flex gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   <button @click.stop="openEdit(app)"
-                    class="text-[10px] text-gray-400 hover:text-brand-600 font-medium">Edit</button>
+                    class="text-[10px] text-white/40 hover:text-brand-300 font-medium">Edit</button>
                   <button @click.stop="deleteApp(app.id)"
-                    class="text-[10px] text-gray-400 hover:text-red-500 font-medium">Hapus</button>
+                    class="text-[10px] text-white/40 hover:text-red-400 font-medium">Hapus</button>
                 </div>
               </div>
+              <select @click.stop @change="updateStatus(app.id, $event.target.value)"
+                :value="app.status"
+                class="md:hidden mt-2 w-full text-[11px] rounded-lg border border-white/10 bg-white/5 px-2 py-1.5 text-white/60 focus:outline-none">
+                <option v-for="s in STATUSES" :key="s" :value="s">{{ s }}</option>
+              </select>
             </div>
 
             <!-- Empty column: whole area is a clickable add zone -->
             <button v-if="byStatus(status).length === 0"
               @click="openNew(status)"
-              class="flex-1 min-h-24 w-full flex flex-col items-center justify-center gap-1.5 rounded-xl border border-dashed border-gray-200 text-gray-300 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50/40 transition-colors">
+              class="flex-1 min-h-24 w-full flex flex-col items-center justify-center gap-1.5 rounded-xl border border-dashed border-white/15 text-white/30 hover:border-brand-400/50 hover:text-brand-300 hover:bg-white/[0.04] transition-colors">
               <span class="text-xl leading-none">+</span>
               <span class="text-[11px] font-medium">Tambah</span>
             </button>
@@ -175,7 +180,7 @@ const COLUMN_ACCENTS = {
             <!-- Non-empty column: small add button under the cards -->
             <button v-else
               @click="openNew(status)"
-              class="mt-1 py-1.5 rounded-lg border border-dashed border-gray-200 text-[11px] text-gray-400 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50/40 transition-colors">
+              class="mt-1 py-1.5 rounded-lg border border-dashed border-white/15 text-[11px] text-white/40 hover:border-brand-400/50 hover:text-brand-300 hover:bg-white/[0.04] transition-colors">
               + Tambah
             </button>
           </div>
@@ -185,22 +190,22 @@ const COLUMN_ACCENTS = {
 
     <!-- FAB -->
     <button @click="openNew"
-      class="fixed bottom-6 right-6 bg-brand-600 text-white px-5 py-3 rounded-2xl shadow-lg hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-xl active:scale-95 transition-all flex items-center gap-2 font-medium text-sm z-10">
+      class="fixed bottom-6 right-6 bg-white text-black px-5 py-3 rounded-full shadow-lg shadow-black/40 hover:-translate-y-0.5 hover:shadow-xl active:scale-95 transition-all flex items-center gap-2 font-medium text-sm z-10">
       <span class="text-base leading-none">+</span> Tambah Lamaran
     </button>
 
     <!-- Modal -->
     <Teleport to="body">
       <div v-if="showModal"
-        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-end sm:items-center sm:p-4"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-end sm:items-center sm:p-4"
         @click.self="closeModal">
-        <div class="bg-white rounded-t-2xl sm:rounded-2xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="bg-neutral-900 border border-white/10 rounded-t-2xl sm:rounded-2xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto shadow-2xl">
           <div class="sm:hidden flex justify-center pt-3 pb-1">
-            <div class="w-10 h-1 rounded-full bg-gray-200"></div>
+            <div class="w-10 h-1 rounded-full bg-white/20"></div>
           </div>
-          <div class="flex items-center justify-between px-6 pt-4 pb-4 border-b border-gray-100">
-            <h2 class="font-semibold text-gray-900">{{ editingApp ? 'Edit Lamaran' : 'Tambah Lamaran' }}</h2>
-            <button @click="closeModal" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors text-lg">✕</button>
+          <div class="flex items-center justify-between px-6 pt-4 pb-4 border-b border-white/10">
+            <h2 class="font-semibold text-white">{{ editingApp ? 'Edit Lamaran' : 'Tambah Lamaran' }}</h2>
+            <button @click="closeModal" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/10 text-white/40 hover:text-white transition-colors text-lg">✕</button>
           </div>
           <div class="p-6">
             <ApplicationForm :initial="editingApp ?? (newStatus ? { status: newStatus } : {})" :preview="false" @submit="save" />

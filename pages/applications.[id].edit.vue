@@ -16,7 +16,7 @@ async function save(updates) {
 
 <template>
   <div class="space-y-4">
-    <h1 class="text-xl font-bold">Edit Lamaran</h1>
+    <h1 class="text-xl font-bold text-white">Edit Lamaran</h1>
     <ApplicationForm v-if="application" :initial="application" @submit="save" />
   </div>
 </template>

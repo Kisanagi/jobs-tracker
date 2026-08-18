@@ -15,32 +15,37 @@ async function submit() {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center px-6">
-    <div class="w-full max-w-xs">
-      <p class="text-xs font-semibold tracking-widest text-brand-600 uppercase mb-2 animate-fade-up">Jobs Tracker</p>
-      <h1 class="text-4xl font-bold text-gray-900 mb-1 animate-fade-up delay-1">Selamat datang.</h1>
-      <p class="text-gray-400 text-sm mb-10 animate-fade-up delay-2">Masuk untuk melanjutkan.</p>
+  <div class="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+    <div class="pointer-events-none fixed -top-40 right-0 w-[55%] h-[60%] rounded-full blur-3xl opacity-40
+                bg-[radial-gradient(closest-side,rgba(176,197,168,0.28),transparent)]"></div>
+    <div class="pointer-events-none fixed -bottom-48 -left-32 w-[55%] h-[60%] rounded-full blur-3xl opacity-30
+                bg-[radial-gradient(closest-side,rgba(255,255,255,0.12),transparent)]"></div>
 
-      <p v-if="error" class="text-red-500 text-sm mb-6">{{ error }}</p>
+    <div class="relative z-10 w-full max-w-xs">
+      <p class="text-xs font-semibold tracking-widest text-brand-300 uppercase mb-2 animate-fade-up">Sise</p>
+      <h1 class="text-4xl font-bold text-white mb-1 animate-fade-up delay-1">Selamat datang.</h1>
+      <p class="text-white/40 text-sm mb-10 animate-fade-up delay-2">Masuk untuk melanjutkan.</p>
+
+      <p v-if="error" class="text-red-400 text-sm mb-6">{{ error }}</p>
 
       <form @submit.prevent="submit" class="space-y-5 animate-fade-up delay-2">
         <div>
-          <label for="email" class="block text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wide">Email</label>
+          <label for="email" class="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide">Email</label>
           <input id="email" v-model="email" type="email" required autofocus
-            class="w-full border-0 border-b-2 border-gray-200 focus:border-brand-500 outline-none py-2 text-sm bg-transparent transition-colors" />
+            class="w-full border-0 border-b-2 border-white/15 focus:border-brand-400 outline-none py-2 text-sm text-white bg-transparent transition-colors" />
         </div>
         <div>
-          <label for="password" class="block text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wide">Password</label>
+          <label for="password" class="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide">Password</label>
           <input id="password" v-model="password" type="password" required
-            class="w-full border-0 border-b-2 border-gray-200 focus:border-brand-500 outline-none py-2 text-sm bg-transparent transition-colors" />
+            class="w-full border-0 border-b-2 border-white/15 focus:border-brand-400 outline-none py-2 text-sm text-white bg-transparent transition-colors" />
         </div>
         <button type="submit" :disabled="loading"
-          class="w-full mt-2 bg-brand-600 text-white py-2.5 text-sm font-medium rounded-xl hover:bg-brand-700 disabled:opacity-50 transition-colors">
+          class="w-full mt-2 bg-white text-black py-2.5 text-sm font-medium rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/10 disabled:opacity-50 transition-all">
           {{ loading ? 'Masuk...' : 'Masuk →' }}
         </button>
       </form>
-      <p class="text-center text-xs text-gray-400 mt-8">
-        Belum punya akun? <NuxtLink to="/register" class="text-brand-600 hover:underline">Daftar</NuxtLink>
+      <p class="text-center text-xs text-white/40 mt-8">
+        Belum punya akun? <NuxtLink to="/register" class="text-brand-300 hover:underline">Daftar</NuxtLink>
       </p>
     </div>
   </div>

@@ -35,8 +35,8 @@ async function submit() {
   }
 }
 
-const inputClass = 'w-full border-0 border-b-2 border-gray-200 focus:border-brand-500 outline-none py-2 text-sm bg-transparent transition-colors'
-const labelClass = 'block text-xs font-medium text-gray-400 uppercase tracking-wide'
+const inputClass = 'w-full border-0 border-b-2 border-white/15 focus:border-brand-400 outline-none py-2 text-sm text-white placeholder-white/25 bg-transparent transition-colors'
+const labelClass = 'block text-xs font-medium text-white/40 uppercase tracking-wide'
 </script>
 
 <template>
@@ -82,31 +82,31 @@ const labelClass = 'block text-xs font-medium text-gray-400 uppercase tracking-w
       </div>
       <div class="flex gap-3 pt-2">
         <button type="submit" :disabled="loading"
-          class="bg-brand-600 text-white px-6 py-2.5 rounded-xl text-sm font-medium hover:bg-brand-700 disabled:opacity-50 transition-colors">
+          class="bg-white text-black px-6 py-2.5 rounded-full text-sm font-medium hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/10 disabled:opacity-50 transition-all">
           {{ loading ? 'Menyimpan...' : 'Simpan →' }}
         </button>
-        <NuxtLink v-if="preview" to="/" class="px-6 py-2.5 rounded-xl text-sm border hover:bg-gray-50 transition-colors">Batal</NuxtLink>
+        <NuxtLink v-if="preview" to="/" class="px-6 py-2.5 rounded-full text-sm border border-white/15 text-white/80 hover:bg-white/10 transition-colors">Batal</NuxtLink>
       </div>
     </form>
 
     <!-- Live preview -->
     <div v-if="preview" class="lg:w-64 shrink-0">
-      <p class="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">Preview Kartu</p>
-      <div class="sticky top-24 bg-white rounded-xl border border-gray-200 p-4 shadow-sm space-y-2.5 transition-all">
+      <p class="text-xs font-medium text-white/40 uppercase tracking-wide mb-3">Preview Kartu</p>
+      <div class="sticky top-24 bg-white/[0.06] rounded-xl border border-white/10 p-4 space-y-2.5 transition-all">
         <div class="flex items-center gap-2">
-          <span class="w-7 h-7 rounded-full bg-brand-100 text-brand-700 grid place-items-center text-xs font-bold shrink-0">
+          <span class="w-7 h-7 rounded-full bg-brand-500/20 text-brand-200 grid place-items-center text-xs font-bold shrink-0">
             {{ (company || '?')[0].toUpperCase() }}
           </span>
-          <span class="text-sm font-semibold text-gray-800 truncate">{{ company || 'Nama Perusahaan' }}</span>
+          <span class="text-sm font-semibold text-white/90 truncate">{{ company || 'Nama Perusahaan' }}</span>
         </div>
-        <p class="text-xs text-gray-500 truncate">{{ position || 'Posisi' }}</p>
-        <p class="text-xs text-gray-400">{{ source || 'Sumber' }}</p>
+        <p class="text-xs text-white/50 truncate">{{ position || 'Posisi' }}</p>
+        <p class="text-xs text-white/40">{{ source || 'Sumber' }}</p>
         <div class="flex items-center justify-between pt-1">
           <span class="text-[10px] px-2 py-0.5 rounded-full font-medium" :class="STATUS_COLORS[status]">{{ status }}</span>
-          <span class="text-[10px] text-gray-300">{{ applied_date || '-' }}</span>
+          <span class="text-[10px] text-white/30">{{ applied_date || '-' }}</span>
         </div>
-        <p v-if="salary_range" class="text-[10px] text-gray-400 border-t border-gray-50 pt-2">{{ salary_range }}</p>
-        <p v-if="notes" class="text-[10px] text-gray-400 italic truncate">{{ notes }}</p>
+        <p v-if="salary_range" class="text-[10px] text-white/40 border-t border-white/5 pt-2">{{ salary_range }}</p>
+        <p v-if="notes" class="text-[10px] text-white/40 italic truncate">{{ notes }}</p>
       </div>
     </div>
   </div>
