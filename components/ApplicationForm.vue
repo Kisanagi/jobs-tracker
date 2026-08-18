@@ -62,7 +62,7 @@ const labelClass = 'block text-xs font-medium text-white/40 uppercase tracking-w
         <label for="source" :class="labelClass">Sumber *</label>
         <input id="source" v-model="source" required placeholder="LinkedIn, Glints, referral..." :class="inputClass" />
       </div>
-      <div class="grid grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div class="space-y-1">
           <label for="applied_date" :class="labelClass">Tanggal Melamar</label>
           <input id="applied_date" v-model="applied_date" type="date" :class="inputClass" />

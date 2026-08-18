@@ -23,7 +23,7 @@ async function logout() {
     <!-- Minimal top bar -->
     <header class="relative z-30 flex items-center justify-between px-5 md:px-8 py-4">
       <NuxtLink to="/" class="font-semibold text-white flex items-center gap-2">
-        <span class="w-7 h-7 rounded-full bg-white/10 grid place-items-center text-sm">◈</span> Sise
+        <span class="w-7 h-7 rounded-full bg-white/10 grid place-items-center text-sm">◈</span> NgTrack
       </NuxtLink>
 
       <!-- Avatar dropdown -->

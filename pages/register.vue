@@ -23,7 +23,7 @@ async function submit() {
                 bg-[radial-gradient(closest-side,rgba(255,255,255,0.12),transparent)]"></div>
 
     <div class="relative z-10 w-full max-w-xs">
-      <p class="text-xs font-semibold tracking-widest text-brand-300 uppercase mb-2 animate-fade-up">Sise</p>
+      <p class="text-xs font-semibold tracking-widest text-brand-300 uppercase mb-2 animate-fade-up">NgTrack</p>
       <h1 class="text-4xl font-bold text-white mb-1 animate-fade-up delay-1">Buat akun.</h1>
       <p class="text-white/40 text-sm mb-10 animate-fade-up delay-2">Mulai lacak lamaranmu.</p>
 

@@ -26,7 +26,7 @@ const sources = ['LinkedIn', 'Glints', 'Jobstreet', 'Kalibrr', 'Indeed']
       <!-- Nav -->
       <nav class="relative z-10 flex items-center justify-between px-5 sm:px-8 py-5">
         <span class="font-semibold text-lg tracking-tight flex items-center gap-2">
-          <span class="w-7 h-7 rounded-full bg-white/10 grid place-items-center text-sm">◈</span> Sise
+          <span class="w-7 h-7 rounded-full bg-white/10 grid place-items-center text-sm">◈</span> NgTrack
         </span>
         <NuxtLink to="/login" class="flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white transition-colors">
           <span class="w-7 h-7 rounded-full border border-white/20 grid place-items-center text-xs">◐</span>
@@ -68,11 +68,11 @@ const sources = ['LinkedIn', 'Glints', 'Jobstreet', 'Kalibrr', 'Indeed']
         </div>
 
         <!-- Bottom meta row -->
-        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between text-xs">
+        <div class="hidden sm:flex absolute bottom-6 left-6 right-6 items-end justify-between text-xs">
           <span class="flex items-center gap-2 text-white/50 bg-white/5 border border-white/10 rounded-full pl-1.5 pr-3 py-1.5">
             <span class="w-6 h-6 rounded-full bg-white/10 grid place-items-center">↓</span> Scroll
           </span>
-          <span class="text-brand-300/80 hidden sm:block">Pipeline lamaran</span>
+          <span class="text-brand-300/80">Pipeline lamaran</span>
         </div>
       </section>
 
