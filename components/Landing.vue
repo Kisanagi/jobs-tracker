@@ -1,12 +1,4 @@
 <script setup>
-// Floating pipeline nodes (mimic the DeFi network labels)
-const nodes = [
-  { label: 'Applied',   value: '24', icon: '◔', pos: 'top-[22%] left-[8%]' },
-  { label: 'Interview', value: '06', icon: '◑', pos: 'top-[24%] right-[7%]' },
-  { label: 'Wishlist',  value: '18', icon: '◇', pos: 'bottom-[26%] left-[10%]' },
-  { label: 'Offer',     value: '02', icon: '◈', pos: 'bottom-[24%] right-[9%]' },
-]
-
 const sources = ['LinkedIn', 'Glints', 'Jobstreet', 'Kalibrr', 'Indeed']
 </script>
 
@@ -36,21 +28,6 @@ const sources = ['LinkedIn', 'Glints', 'Jobstreet', 'Kalibrr', 'Indeed']
 
       <!-- Hero -->
       <section class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 py-16">
-        <!-- Floating nodes (desktop only) -->
-        <template v-for="n in nodes" :key="n.label">
-          <div class="hidden lg:flex items-center gap-3 absolute animate-float" :class="n.pos">
-            <span class="w-11 h-11 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white/70 backdrop-blur">{{ n.icon }}</span>
-            <div class="text-left leading-tight">
-              <p class="text-sm text-white/90">{{ n.label }}</p>
-              <p class="text-xs text-white/40">{{ n.value }}</p>
-            </div>
-          </div>
-        </template>
-
-        <a href="#board" class="inline-flex items-center gap-2 text-xs text-white/70 bg-white/5 border border-white/10 rounded-full px-3.5 py-1.5 mb-8 backdrop-blur hover:bg-white/10 transition-colors animate-fade-up">
-          <span class="w-1.5 h-1.5 rounded-full bg-brand-300"></span> Kelola lamaran tanpa ribet →
-        </a>
-
         <h1 class="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02] max-w-4xl animate-fade-up delay-1">
           Semua lamaran dalam<br /><span class="text-white/35">satu papan kendali</span>
         </h1>

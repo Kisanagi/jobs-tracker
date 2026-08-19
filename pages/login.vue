@@ -4,6 +4,7 @@ const email = ref('')
 const password = ref('')
 const error = ref('')
 const loading = ref(false)
+const showPassword = ref(false)
 
 async function submit() {
   loading.value = true
@@ -36,8 +37,14 @@ async function submit() {
         </div>
         <div>
           <label for="password" class="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide">Password</label>
-          <input id="password" v-model="password" type="password" required
-            class="w-full border-0 border-b-2 border-white/15 focus:border-brand-400 outline-none py-2 text-sm text-white bg-transparent transition-colors" />
+          <div class="relative">
+            <input id="password" v-model="password" :type="showPassword ? 'text' : 'password'" required
+              class="w-full border-0 border-b-2 border-white/15 focus:border-brand-400 outline-none py-2 text-sm text-white bg-transparent transition-colors pr-8" />
+            <button type="button" @click="showPassword = !showPassword"
+              class="absolute right-0 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition-colors text-xs">
+              {{ showPassword ? 'Sembunyikan' : 'Lihat' }}
+            </button>
+          </div>
         </div>
         <button type="submit" :disabled="loading"
           class="w-full mt-2 bg-white text-black py-2.5 text-sm font-medium rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/10 disabled:opacity-50 transition-all">

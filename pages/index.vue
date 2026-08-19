@@ -13,6 +13,14 @@ const draggingId = ref(null)
 const showModal = ref(false)
 const editingApp = ref(null)
 
+const greeting = computed(() => {
+  const h = new Date().getHours()
+  if (h < 11) return 'Selamat pagi'
+  if (h < 15) return 'Selamat siang'
+  if (h < 18) return 'Selamat sore'
+  return 'Selamat malam'
+})
+
 const total = computed(() => applications.value?.length ?? 0)
 const awaiting = computed(() => applications.value?.filter(a => ['Applied', 'Screening', 'Interview'].includes(a.status)).length ?? 0)
 const rejected = computed(() => applications.value?.filter(a => ['Rejected', 'Ghosted'].includes(a.status)).length ?? 0)
@@ -87,8 +95,8 @@ const COLUMN_ACCENTS = {
 
     <!-- Header -->
     <div class="animate-fade-up">
-      <h1 class="text-2xl md:text-3xl font-semibold text-white tracking-tight">Dashboard</h1>
-      <p class="text-sm text-white/40 mt-0.5">{{ user.email }}</p>
+      <h1 class="text-2xl md:text-3xl font-semibold text-white tracking-tight">{{ greeting }} 👋</h1>
+      <p class="text-sm text-white/40 mt-0.5">Semangat dalam pencarianmu.</p>
     </div>
 
     <!-- Stat cards -->
