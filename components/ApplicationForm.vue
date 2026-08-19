@@ -54,9 +54,12 @@ const labelClass = 'block text-xs font-medium text-white/40 uppercase tracking-w
       </div>
       <div class="space-y-1">
         <label for="status" :class="labelClass">Status</label>
-        <select id="status" v-model="status" :class="inputClass">
-          <option v-for="s in STATUSES" :key="s" :value="s">{{ s }}</option>
-        </select>
+        <div class="relative">
+          <select id="status" v-model="status" :class="inputClass + ' appearance-none pr-6 cursor-pointer'">
+            <option v-for="s in STATUSES" :key="s" :value="s">{{ s }}</option>
+          </select>
+          <span class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-white/30 text-xs">▾</span>
+        </div>
       </div>
       <div class="space-y-1">
         <label for="source" :class="labelClass">Sumber *</label>
